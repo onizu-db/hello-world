@@ -10,7 +10,7 @@ $array = ['abc']; // Assign the value ['abc'] (array with one element 0 => 'abc'
 var_dump($array);
 echo "-----\n";
 
-$array[] = 'abc'; // Add a new element to the array 'abc'
+$array[] = 'abc'; // Add a new element 'abc' to the array
 
 var_dump($array);
 echo "-----\n";
