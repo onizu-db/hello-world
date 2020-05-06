@@ -16,3 +16,18 @@ if ($y === 1) {
 }
 
 echo $x;
+
+// null-coalescing operator:
+$values = [
+    'a' => 1,
+    'b' => 2,
+    'c' => 3
+    ];
+$total = [];
+foreach($values as $value) {
+    $total['x'] ?? $total['x'] = 0; 
+    // null-coalescing operator (PHP7):
+    // $x ?? $x=; if $x is not set, set it to 0, else retain its value.
+    $total['x'] += $value;
+}
+var_dump($total); // array(1) { ["x"] => int(6) }
