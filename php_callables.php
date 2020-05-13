@@ -33,9 +33,13 @@ class Test {
         $this->func2('func1', 'hello');
     }
     
+    private function func4($funcName, $arg) {
+        $funcName($arg);   
+    }
+    
     // another way:
-    public function func4() {
-        $this->func2([$this, 'func1'], 'hello');   // call_user_func(array($obj, 'myCallbackMethod'));
+    public function func5() {
+        $this->func4([$this, 'func1'], 'hello');   // call_user_func(array($obj, 'myCallbackMethod'));
     }
 }
 
