@@ -28,8 +28,14 @@ class Test {
         call_user_func($funcName, $arg);
     }
     
+    // one way:
     public function func3() {
         $this->func2('func1', 'hello');
+    }
+    
+    // another way:
+    public function func4() {
+        $this->func2([$this, 'func1'], 'hello');   // call_user_func(array($obj, 'myCallbackMethod'));
     }
 }
 
