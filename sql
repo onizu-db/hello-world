@@ -1,3 +1,7 @@
+// Create unique index for multiple columns
+$sql = 'CREATE UNIQUE INDEX item_rateGroup ON boq_rate (`itemID`, `rateGroupID`)';
+
+// insert before a row and reconfigure sort
 begin; 
 update categories set sort = sort + 1 where parent_id = <category id> and sort >= <position to insert at>; 
 insert into categories (name, sort, parent_id) values ('my new category', <position to insert at>, category_id); 
