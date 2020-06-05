@@ -19,3 +19,7 @@ UPDATE `boq_qtysubgroup` AS t1 JOIN (SELECT qtySubGroupID, row_number() over(ORD
 // add with sort value = 1 + highest in table:
 UPDATE `boq_rategroup` set rateGroupSort = (SELECT max(rateGroupSort) FROM `boq_rategroup`) + 1 WHERE rateGroupSort = 0
 INSERT INTO `boq_rategroup` ($rateGroupSort, $rateGroupID, $rateGroupTitle) VALUES (SELECT max(rateGroupSort) + 1,  'title');
+
+// Add values equal to the corresponding row-number in the new column `qtySubGroupSort`:
+UPDATE `boq_qtysubgroup` AS t1 JOIN (SELECT qtySubGroupID, row_number() over(ORDER BY qtyGroupID) as rowNum FROM `boq_qtysubgroup`) AS t2 ON t1.qtySubGroupID = t2.qtySubGroupID SET t1.qtySubGroupSort = t2.rowNum 
+
