@@ -23,3 +23,5 @@ INSERT INTO `boq_rategroup` ($rateGroupSort, $rateGroupID, $rateGroupTitle) VALU
 // Add values equal to the corresponding row-number in the new column `qtySubGroupSort`:
 UPDATE `boq_qtysubgroup` AS t1 JOIN (SELECT qtySubGroupID, row_number() over(ORDER BY qtyGroupID) as rowNum FROM `boq_qtysubgroup`) AS t2 ON t1.qtySubGroupID = t2.qtySubGroupID SET t1.qtySubGroupSort = t2.rowNum 
 
+// Select rows where a column contains a word 'test':
+SELECT * FROM boq_items WHERE itemTitle LIKE '%test%'
