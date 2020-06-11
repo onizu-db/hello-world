@@ -25,3 +25,12 @@ UPDATE `boq_qtysubgroup` AS t1 JOIN (SELECT qtySubGroupID, row_number() over(ORD
 
 // Select rows where a column contains a word 'test':
 SELECT * FROM boq_items WHERE itemTitle LIKE '%test%'
+
+// Add columns to an existing table
+ALTER TABLE `boq_items` ADD (
+  `itemRefCode` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `itemBasicRate` smallint(6) DEFAULT NULL,
+  `itemLocation` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `itemRemarkBD` text COLLATE utf8_unicode_ci,
+  `itemRemarkVendor` text COLLATE utf8_unicode_ci
+) 
